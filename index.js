@@ -4,13 +4,13 @@ const users = require("./MOCK_DATA.json");
 
 const PORT = 5000;
 
-// app.get('/users',(req,res) => {
-//     const html=`
-//     <ul>
-//     ${users.map(user => `<li>${user.first_name}</li>`).join("")}
-//     </ul>`
-//     return res.send(html);
-// });
+app.get('/users',(req,res) => {
+    const html=`
+    <ul>
+    ${users.map(user => `<li>${user.first_name}</li>`).join("")}
+    </ul>`
+    return res.send(html);
+});
 
 //ROUTES
 
@@ -23,6 +23,14 @@ const PORT = 5000;
 //     const user = users.find(user => user.id === id);
 //     return res.json(user);
 // });
+
+
+//Middleware -Plugin
+
+app.use((req,res,next)=>{
+next();
+});
+
 
 app
   .route("/api/users/:id")
